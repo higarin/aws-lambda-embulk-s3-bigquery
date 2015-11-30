@@ -1,0 +1,40 @@
+
+apply plugin: 'java'
+apply plugin:'application'
+
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
+
+group = 'net.lulichn.lambda'
+
+version = 0.2
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.amazonaws:aws-lambda-java-core:1.0.0'
+    compile 'com.amazonaws:aws-lambda-java-events:1.0.0'
+
+    compile "com.google.http-client:google-http-client-jackson2:1.21.0"
+    compile "com.google.apis:google-api-services-bigquery:v2-rev249-1.20.0"
+
+    compile 'org.embulk:embulk-core:0.7.9'
+    compile 'org.embulk:embulk-standards:0.7.9'
+
+    compile fileTree (dir: 'libs', include: ['*.jar'])
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
+
+mainClassName = "net.lulichn.lambda.App"

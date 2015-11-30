@@ -1,0 +1,9 @@
+[submodule "ext/embulk-input-s3"]
+	path = ext/embulk-input-s3
+	url = https://github.com/embulk/embulk-input-s3.git
+[submodule "ext/embulk-output-bigquery"]
+	path = ext/embulk-output-bigquery
+	url = https://github.com/embulk/embulk-output-bigquery.git
+[submodule "ext\\embulk-parser-json-line"]
+	path = ext\\embulk-parser-json-line
+	url = https://github.com/lulichn/embulk-parser-json-line.git

@@ -1,0 +1,4 @@
+
+rootProject.name = 'lambda-embulk-s3-bigquery'
+
+include 'ext/embulk-output-bigquery', 'ext/embulk-input-s3', 'ext/embulk-parser-json-line'
